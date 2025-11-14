@@ -10,6 +10,15 @@ public class StudentsApp {
         student.name=scanner.nextLine();
         System.out.println("Input Student's avg:");
         student.avg=scanner.nextDouble();
+        System.out.println("Input gender w/m");
+        student.sex=scanner.next().charAt(0);
+        if (student.avg>0){
+            student.admitedState=true;
+        } else {
+            student.admitedState=false;
+        }
+        student.greatting();
+
 
     }
 
