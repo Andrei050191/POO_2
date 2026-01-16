@@ -1,0 +1,16 @@
+package usarb.poo.java.Lab_4.src.first;
+
+public class OutTask implements Task {
+    private String message;
+
+    public OutTask(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public void execute() {
+        System.out.println(message);
+    }
+}
+
+

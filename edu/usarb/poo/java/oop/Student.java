@@ -1,4 +1,4 @@
-package edu.usarb.poo.java.oop;
+package usarb.poo.java.oop;
 
 public class Student {
    

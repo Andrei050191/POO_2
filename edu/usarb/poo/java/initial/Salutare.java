@@ -1,4 +1,4 @@
-package edu.usarb.poo.java.initial;
+package usarb.poo.java.initial;
 
 import java.util.Scanner;
 
