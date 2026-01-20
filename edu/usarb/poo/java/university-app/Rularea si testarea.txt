@@ -1,0 +1,26 @@
+Pornește aplicația (UniversityApplication.java -> Run).
+
+1 Verificăm datele inițiale:
+
+GET http://localhost:8080/api/university/students (Vezi Alexandru și Elena).
+
+GET http://localhost:8080/api/university/courses (Vezi Java și Baze de Date).
+
+2 Înscriem pe Alexandru (ID 1) la Java (ID 1):
+
+Din browser e greu să faci POST, dar poți folosi PowerShell:
+Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/university/enroll?studentId=1&courseId=1"
+
+3 Îl înscriem pe Alexandru (ID 1) și la Baze de Date (ID 2): Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/university/enroll?studentId=1&courseId=2"
+
+4 Verificăm cursurile lui Alexandru:
+
+Browser: http://localhost:8080/api/university/students/1/courses
+
+Rezultat așteptat: Un JSON care conține ambele cursuri (Java și Baze de Date).
+
+5 Verificăm cursurile Elenei (ID 2):
+
+Browser: http://localhost:8080/api/university/students/2/courses
+
+Rezultat așteptat: Listă goală [] (pentru că nu am înscris-o nicăieri).

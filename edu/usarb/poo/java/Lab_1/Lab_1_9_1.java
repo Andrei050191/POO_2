@@ -1,45 +1,48 @@
 import java.util.Scanner;
 
 public class Lab_1_9_1 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        double a, b;
-        char op;
-
-        System.out.print("Introdu primul numar: ");
-        a = sc.nextDouble();
-
-        System.out.print("Introdu al doilea numar: ");
-        b = sc.nextDouble();
-
-        System.out.print("Introdu operatia (+, -, *, /): ");
-        op = sc.next().charAt(0);
-
-        double rezultat;
-
-        switch (op) {
-            case '+':
-                rezultat = a + b;
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the first number: ");
+        double number1 = scanner.nextDouble();
+        
+        System.out.print("Enter the second number: ");
+        double number2 = scanner.nextDouble();
+        
+        System.out.print("Enter the operation (+, -, *, /): ");
+        String operation = scanner.next();
+        
+        double result = 0;
+        boolean validOperation = true;
+        
+        switch (operation) {
+            case "+":
+                result = number1 + number2;
                 break;
-            case '-':
-                rezultat = a - b;
+            case "-":
+                result = number1 - number2;
                 break;
-            case '*':
-                rezultat = a * b;
+            case "*":
+                result = number1 * number2;
                 break;
-            case '/':
-                if (b == 0) {
-                    System.out.println("Eroare: împărțire la zero!");
-                    return;
+            case "/":
+                if (number2 != 0) {
+                    result = number1 / number2;
+                } else {
+                    System.out.println("Error: Division by zero!");
+                    validOperation = false;
                 }
-                rezultat = a / b;
                 break;
             default:
-                System.out.println("Operatie invalida!");
-                return;
+                System.out.println("Error: Invalid operation! Valid operations are: +, -, *, /");
+                validOperation = false;
         }
-
-        System.out.println("Rezultatul este: " + rezultat);
+        
+        if (validOperation) {
+            System.out.println(number1 + " " + operation + " " + number2 + " = " + result);
+        }
+        
+        scanner.close();
     }
 }

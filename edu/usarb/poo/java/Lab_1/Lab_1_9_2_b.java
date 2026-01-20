@@ -1,28 +1,32 @@
 import java.util.Scanner;
 
 public class Lab_1_9_2_b {
+    
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        long suma = 0;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter integers (0 to stop):");
+        
+        int sum = 0;
         int count = 0;
-        int x;
-
-        System.out.println("Introdu numere intregi (0 opreste citirea):");
-
-        while (true) {
-            x = sc.nextInt();
-            if (x == 0) break;
-
-            suma += x;
-            count++;
-        }
-
+        int number;
+        
+        do {
+            number = scanner.nextInt();
+            if (number != 0) {
+                sum += number;
+                count++;
+            }
+        } while (number != 0);
+        
         if (count == 0) {
-            System.out.println("Nu s-au citit valori (in afara de 0).");
+            System.out.println("No numbers entered!");
         } else {
-            double media = (double) suma / count;
-            System.out.println("Media aritmetica este: " + media);
+            double average = (double) sum / count;
+            System.out.println("Arithmetic mean: " + average);
         }
+        
+        scanner.close();
     }
 }
+

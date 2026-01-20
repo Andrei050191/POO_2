@@ -2,45 +2,48 @@ import java.util.Scanner;
 
 public class Lab_1_9_2_d {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("n = ");
-        int n = sc.nextInt();
-
-        if (n < 2) {
-            System.out.println("Trebuie cel putin 2 valori.");
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter n: ");
+        int n = scanner.nextInt();
+        
+        if (n <= 0) {
+            System.out.println("Error: n must be positive!");
+            scanner.close();
             return;
         }
-
-        int[] v = new int[n];
-        System.out.println("Introdu " + n + " numere naturale:");
+        
+        int[] numbers = new int[n];
+        
+        System.out.println("Enter " + n + " natural numbers:");
         for (int i = 0; i < n; i++) {
-            v[i] = sc.nextInt();
+            numbers[i] = scanner.nextInt();
         }
-
-        double maxVal = -1.0;
-        int num = 0, den = 1;
-
-        // cautam toate perechile (i,j) cu v[i] < v[j]
+        
+        int bestNumerator = 0;
+        int bestDenominator = 1;
+        double maxFraction = 0.0;
+        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (v[j] == 0) continue;  // nu putem imparti la 0
-                if (v[i] < v[j]) {        // subunitar
-                    double val = (double) v[i] / v[j];
-                    if (val > maxVal) {
-                        maxVal = val;
-                        num = v[i];
-                        den = v[j];
+                if (numbers[i] < numbers[j]) {
+                    double fraction = (double) numbers[i] / numbers[j];
+                    if (fraction > maxFraction) {
+                        maxFraction = fraction;
+                        bestNumerator = numbers[i];
+                        bestDenominator = numbers[j];
                     }
                 }
             }
         }
-
-        if (maxVal < 0) {
-            System.out.println("Nu exista fractie subunitara cu valorile date.");
+        
+        if (bestDenominator == 1 && bestNumerator == 0) {
+            System.out.println("No proper fraction found!");
         } else {
-            System.out.println("Cel mai mare numar rational subunitar este: "
-                               + num + "/" + den);
+            System.out.println("Largest proper fraction: " + bestNumerator + "/" + bestDenominator);
         }
+        
+        scanner.close();
     }
 }
+
