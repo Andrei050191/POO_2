@@ -1,6 +1,5 @@
 package usarb.poo.java.Lab_5;
 
-
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
