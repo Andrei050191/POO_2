@@ -1,18 +1,18 @@
-package usarb.poo.java.Lab_4.src.first;
+package first;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public class RandomOutTask implements Task {
-    private int number;
+    private final double generatedNumber;
 
     public RandomOutTask() {
-        number = new Random().nextInt(100);
+        this.generatedNumber = ThreadLocalRandom.current().nextDouble();
     }
 
     @Override
     public void execute() {
-        System.out.println("Random number: " + number);
+        System.out.println("Generated number: " + generatedNumber);
     }
 }
-
 

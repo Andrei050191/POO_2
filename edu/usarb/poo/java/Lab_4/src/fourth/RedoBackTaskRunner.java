@@ -1,26 +1,26 @@
-package usarb.poo.java.Lab_4.src.fourth;
+package fourth;
 
-import usarb.poo.java.Lab_4.src.first.Task;
-import usarb.poo.java.Lab_4.src.second.*;
+import first.Task;
+import second.Container;
+import third.ContainerFactory;
+import third.Strategy;
 
 public class RedoBackTaskRunner extends AbstractTaskRunner {
+    private Container executedTasks;
 
-    private Container history = new Stack();
-
-    public RedoBackTaskRunner(Container c) {
-        super(c);
+    public RedoBackTaskRunner() {
+        this.executedTasks = ContainerFactory.getInstance().createContainer(Strategy.LIFO);
     }
 
     @Override
-    protected void afterExecution(Task task) {
-        history.push(task);
+    protected void afterTask() {
+        executedTasks.push(task);
     }
 
     public void redo() {
-        while (!history.isEmpty()) {
-            history.pop().execute();
+        while (!executedTasks.isEmpty()) {
+            Task task = executedTasks.pop();
+            task.execute();
         }
     }
 }
-
-

@@ -1,6 +1,6 @@
-package usarb.poo.java.lab_4.src.second;
+package usarb.poo.java.lab_4_src.second;
 
-import usarb.poo.java.lab_4.src.first.Task;
+import usarb.poo.java.lab_4_src.first.Task;
 import java.util.ArrayList;
 
 public class Stack implements Container {

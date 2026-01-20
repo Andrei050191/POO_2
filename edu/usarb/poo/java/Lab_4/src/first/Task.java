@@ -1,7 +1,6 @@
-package usarb.poo.java.Lab_4.src.first;
+package first;
 
 public interface Task {
     void execute();
 }
-
 

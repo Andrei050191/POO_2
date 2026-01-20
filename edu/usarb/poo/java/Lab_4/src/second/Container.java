@@ -1,12 +1,10 @@
-package usarb.poo.java.Lab_4.src.second;
+package second;
 
-import usarb.poo.java.Lab_4.src.first.Task;
+import first.Task;
 
 public interface Container {
-    void push(Task task);
     Task pop();
+    void push(Task task);
     int size();
     boolean isEmpty();
 }
-
-

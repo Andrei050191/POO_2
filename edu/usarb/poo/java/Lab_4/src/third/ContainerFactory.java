@@ -1,25 +1,27 @@
-package usarb.poo.java.Lab_4.src.third;
+package third;
 
-import usarb.poo.java.Lab_4.src.second.*;
+import second.Container;
+import second.Queue;
+import second.Stack;
 
-public class ContainerFactory {
+public class ContainerFactory implements IFactory {
+    private static ContainerFactory instance = null;
 
-    private static ContainerFactory instance;
-
-    private ContainerFactory() {}
+    private ContainerFactory() {
+    }
 
     public static ContainerFactory getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new ContainerFactory();
+        }
         return instance;
     }
 
+    @Override
     public Container createContainer(Strategy strategy) {
-        if (strategy == Strategy.STACK)
-            return new Stack();
-        else
-            return new Queue();
+        return switch (strategy) {
+            case LIFO -> new Stack();
+            case FIFO -> new Queue();
+        };
     }
 }
-
-

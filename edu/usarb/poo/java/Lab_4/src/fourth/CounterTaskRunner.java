@@ -1,21 +1,14 @@
-package usarb.poo.java.Lab_4.src.fourth;
-
-import usarb.poo.java.Lab_4.src.first.Task;
-import usarb.poo.java.Lab_4.src.second.Container;
+package fourth;
 
 public class CounterTaskRunner extends AbstractTaskRunner {
-
-    private int count = 0;
-
-    public CounterTaskRunner(Container c) {
-        super(c);
-    }
+    private int counter = 0;
 
     @Override
-    protected void afterExecution(Task task) {
-        count++;
-        System.out.println("Executed tasks: " + count);
+    protected void afterTask() {
+        counter++;
+    }
+
+    public int getCounter() {
+        return counter;
     }
 }
-
-

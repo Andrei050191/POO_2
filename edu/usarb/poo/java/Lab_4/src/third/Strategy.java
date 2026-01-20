@@ -1,7 +1,6 @@
-package usarb.poo.java.Lab_4.src.third;
+package third;
 
 public enum Strategy {
-    STACK, QUEUE
+    LIFO,
+    FIFO
 }
-
-

@@ -1,6 +1,6 @@
-package usarb.poo.java.lab_4.src.third;
+package usarb.poo.java.lab_4_src.third;
 
-import usarb.poo.java.lab_4.src.second.*;
+import usarb.poo.java.lab_4_src.second.*;
 
 public class ContainerFactory {
 

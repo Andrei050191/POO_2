@@ -1,28 +1,23 @@
-package usarb.poo.java.Lab_4.src.fourth;
+package fourth;
 
-import usarb.poo.java.Lab_4.src.first.Task;
-import usarb.poo.java.Lab_4.src.second.Container;
+import first.Task;
 
 public abstract class AbstractTaskRunner {
-    protected Container container;
+    protected Task task;
 
-    public AbstractTaskRunner(Container container) {
-        this.container = container;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
-    public void addTask(Task task) {
-        container.push(task);
+    public void executeTask() {
+        beforeTask();
+        task.execute();
+        afterTask();
     }
 
-    public void executeAll() {
-        while (!container.isEmpty()) {
-            Task task = container.pop();
-            task.execute();
-            afterExecution(task);
-        }
+    protected void beforeTask() {
     }
 
-    protected abstract void afterExecution(Task task);
+    protected void afterTask() {
+    }
 }
-
-

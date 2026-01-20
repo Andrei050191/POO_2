@@ -1,4 +1,4 @@
-package usarb.poo.java.Lab_4.src.first;
+package first;
 
 public class CounterOutTask implements Task {
     private static int counter = 0;
@@ -6,8 +6,7 @@ public class CounterOutTask implements Task {
     @Override
     public void execute() {
         counter++;
-        System.out.println("Counter: " + counter);
+        System.out.println("Counter value: " + counter);
     }
 }
-
 

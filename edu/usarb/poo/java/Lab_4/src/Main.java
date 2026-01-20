@@ -1,25 +1,81 @@
+package org.example;
 
-package usarb.poo.java.Lab_4.src;
-
-import usarb.poo.java.Lab_4.src.first.*;
-import usarb.poo.java.Lab_4.src.fourth.*;
-import usarb.poo.java.Lab_4.src.second.*;
-import usarb.poo.java.Lab_4.src.third.*;
+import first.CounterOutTask;
+import first.OutTask;
+import first.RandomOutTask;
+import first.Task;
+import second.Container;
+import third.ContainerFactory;
+import third.Strategy;
+import fourth.PrintTimeTaskRunner;
+import fourth.CounterTaskRunner;
+import fourth.RedoBackTaskRunner;
 
 public class Main {
     public static void main(String[] args) {
-        Container c = ContainerFactory.getInstance()
-                .createContainer(Strategy.STACK);
+        System.out.println("OutTask");
+        Task outTask = new OutTask("Hello from OutTask");
+        outTask.execute();
 
-        AbstractTaskRunner runner =
-                new PrintTimeTaskRunner(c);
+        System.out.println("\nRandomOutTask");
+        Task randomTask1 = new RandomOutTask();
+        Task randomTask2 = new RandomOutTask();
+        randomTask1.execute();
+        randomTask2.execute();
 
-        runner.addTask(new OutTask("Hello"));
-        runner.addTask(new RandomOutTask());
-        runner.addTask(new CounterOutTask());
+        System.out.println("\nCounterOutTask");
+        Task counterTask = new CounterOutTask();
+        counterTask.execute();
+        counterTask.execute();
+        counterTask.execute();
 
-        runner.executeAll();
+        System.out.println("\nStack LIFO");
+        Container stack = ContainerFactory.getInstance().createContainer(Strategy.LIFO);
+        stack.push(new OutTask("First task"));
+        stack.push(new OutTask("Second task"));
+        stack.push(new OutTask("Third task"));
+        System.out.println("Popping from stack");
+        while (!stack.isEmpty()) {
+            stack.pop().execute();
+        }
+
+        System.out.println("\nQueue FIFO");
+        Container queue = ContainerFactory.getInstance().createContainer(Strategy.FIFO);
+        queue.push(new OutTask("First task"));
+        queue.push(new OutTask("Second task"));
+        queue.push(new OutTask("Third task"));
+        System.out.println("Popping from queue");
+        while (!queue.isEmpty()) {
+            queue.pop().execute();
+        }
+
+        System.out.println("\nContainerFactory Singleton");
+        ContainerFactory factory1 = ContainerFactory.getInstance();
+        ContainerFactory factory2 = ContainerFactory.getInstance();
+        System.out.println("Same instance " + (factory1 == factory2));
+
+        System.out.println("\nPrintTimeTaskRunner");
+        PrintTimeTaskRunner timeRunner = new PrintTimeTaskRunner();
+        timeRunner.setTask(new OutTask("Task with time"));
+        timeRunner.executeTask();
+
+        System.out.println("\nCounterTaskRunner");
+        CounterTaskRunner counterRunner = new CounterTaskRunner();
+        counterRunner.setTask(new OutTask("Counted task"));
+        counterRunner.executeTask();
+        counterRunner.executeTask();
+        counterRunner.executeTask();
+        System.out.println("Tasks executed " + counterRunner.getCounter());
+
+        System.out.println("\nRedoBackTaskRunner");
+        RedoBackTaskRunner redoRunner = new RedoBackTaskRunner();
+        redoRunner.setTask(new OutTask("Task A"));
+        redoRunner.executeTask();
+        redoRunner.setTask(new OutTask("Task B"));
+        redoRunner.executeTask();
+        redoRunner.setTask(new OutTask("Task C"));
+        redoRunner.executeTask();
+        System.out.println("Redo in reverse order");
+        redoRunner.redo();
     }
 }
-
-

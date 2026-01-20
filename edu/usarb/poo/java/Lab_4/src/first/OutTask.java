@@ -1,7 +1,7 @@
-package usarb.poo.java.Lab_4.src.first;
+package first;
 
 public class OutTask implements Task {
-    private String message;
+    private final String message;
 
     public OutTask(String message) {
         this.message = message;
@@ -12,5 +12,4 @@ public class OutTask implements Task {
         System.out.println(message);
     }
 }
-
 

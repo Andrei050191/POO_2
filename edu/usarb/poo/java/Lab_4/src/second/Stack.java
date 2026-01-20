@@ -1,30 +1,13 @@
-package usarb.poo.java.Lab_4.src.second;
+package second;
 
-import usarb.poo.java.Lab_4.src.first.Task;
-import java.util.ArrayList;
+import first.Task;
 
-public class Stack implements Container {
-    private ArrayList<Task> list = new ArrayList<>();
-
-    @Override
-    public void push(Task task) {
-        list.add(task);
-    }
-
+public class Stack extends AbstractContainer {
     @Override
     public Task pop() {
-        return list.remove(list.size() - 1);
-    }
-
-    @Override
-    public int size() {
-        return list.size();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return list.isEmpty();
+        if (isEmpty()) {
+            return null;
+        }
+        return tasks.remove(tasks.size() - 1);
     }
 }
-
-
